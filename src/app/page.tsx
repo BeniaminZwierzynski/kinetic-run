@@ -48,10 +48,10 @@ export default function Dashboard() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="mb-12">
+      <section className="mb-12 animate-fade-in-up">
         <h2 className="font-[family-name:var(--font-lexend)] font-extrabold text-5xl text-white tracking-tighter leading-none mb-4">
           READY TO<br />
-          <span className="text-on-surface-variant/40">EVOLVE?</span>
+          <span className="text-accent-green">EVOLVE?</span>
         </h2>
         <p className="font-[family-name:var(--font-body)] text-on-surface-variant max-w-xs ml-1">
           Today is a perfect day for a run. Let&apos;s go.
@@ -59,10 +59,10 @@ export default function Dashboard() {
       </section>
 
       {/* Start Run CTA */}
-      <section className="mb-6">
+      <section className="mb-6 animate-fade-in-up">
         <Link
           href="/run"
-          className="w-full py-8 bg-gradient-to-b from-primary to-primary-container text-on-primary font-[family-name:var(--font-lexend)] font-black text-2xl tracking-widest rounded-full shadow-[0_20px_50px_rgba(255,255,255,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-4"
+          className="w-full py-8 bg-gradient-to-b from-accent-green to-accent-green-dim text-white font-[family-name:var(--font-lexend)] font-black text-2xl tracking-widest rounded-full shadow-[0_20px_50px_rgba(255,255,255,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-4"
         >
           START RUNNING
           <span className="text-3xl">▶</span>
@@ -71,15 +71,15 @@ export default function Dashboard() {
       <section className="mb-12 text-center">
         <Link
           href="/dodaj"
-          className="text-on-surface-variant text-sm font-[family-name:var(--font-label)] hover:text-white transition-colors uppercase tracking-widest"
+          className="text-accent-blue text-sm font-[family-name:var(--font-label)] hover:text-white transition-colors uppercase tracking-widest"
         >
           or log manually →
         </Link>
       </section>
 
       {/* Stats Bento Grid */}
-      <section className="grid grid-cols-2 gap-4 mb-12">
-        <div className="col-span-2 bg-surface-container-low rounded-2xl p-6 flex flex-col justify-between h-48">
+      <section className="grid grid-cols-2 gap-4 mb-12 stagger animate-fade-in-up">
+        <div className="col-span-2 bg-surface-container-low rounded-2xl p-6 flex flex-col justify-between h-48 border-l-4 border-accent-green">
           <span className="text-on-surface-variant text-xs font-bold tracking-[0.2em] uppercase font-[family-name:var(--font-label)]">
             Weekly Distance
           </span>
@@ -95,13 +95,13 @@ export default function Dashboard() {
 
         <div className="bg-surface-container rounded-2xl p-6 flex flex-col justify-between h-48">
           <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
-            <span className="text-white">🔥</span>
+            <span className="text-accent-orange">🔥</span>
           </div>
           <div>
             <span className="text-on-surface-variant text-xs font-bold tracking-[0.2em] uppercase block mb-1 font-[family-name:var(--font-label)]">
               Calories
             </span>
-            <span className="font-[family-name:var(--font-lexend)] font-bold text-3xl text-white">
+            <span className="font-[family-name:var(--font-lexend)] font-bold text-3xl text-accent-orange">
               {weekCalories.toLocaleString()}
             </span>
           </div>
@@ -115,7 +115,7 @@ export default function Dashboard() {
             <span className="text-on-surface-variant text-xs font-bold tracking-[0.2em] uppercase block mb-1 font-[family-name:var(--font-label)]">
               Total Time
             </span>
-            <span className="font-[family-name:var(--font-lexend)] font-bold text-3xl text-white">
+            <span className="font-[family-name:var(--font-lexend)] font-bold text-3xl text-accent-blue">
               {formatDuration(weekTime)}
             </span>
           </div>
@@ -124,7 +124,7 @@ export default function Dashboard() {
 
       {/* Coach Banner */}
       {latestCoachMsg && (
-        <Link href="/coach" className="block mb-8">
+        <Link href="/coach" className="block mb-8 animate-fade-in">
           <div className="bg-surface-container rounded-2xl p-5 flex items-start gap-3 hover:bg-surface-container-high transition-all duration-300">
             <span className="text-2xl flex-shrink-0">{latestCoachMsg.icon}</span>
             <div className="flex-1 min-w-0">
@@ -141,7 +141,7 @@ export default function Dashboard() {
       )}
 
       {/* Last Run Preview */}
-      <section className="mb-8">
+      <section className="mb-8 animate-fade-in-up">
         <div className="flex justify-between items-end mb-6">
           <h3 className="font-[family-name:var(--font-lexend)] font-extrabold text-2xl text-white tracking-tight uppercase">
             Last Run
@@ -157,7 +157,7 @@ export default function Dashboard() {
         </div>
 
         {lastWorkout ? (
-          <div className="relative overflow-hidden rounded-2xl bg-surface-container-low p-8">
+          <div className="relative overflow-hidden rounded-2xl bg-surface-container-low p-8 border-t-2 border-accent-green">
             <div className="flex flex-wrap items-center gap-8">
               <div>
                 <span className="block text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-1 font-[family-name:var(--font-label)]">

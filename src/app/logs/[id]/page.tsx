@@ -81,7 +81,7 @@ export default function WorkoutDetailPage() {
       </button>
 
       {/* Header */}
-      <section className="mb-6">
+      <section className="mb-6 animate-fade-in-up">
         <div className="flex items-center gap-3 mb-2">
           <h2 className="font-[family-name:var(--font-lexend)] text-3xl font-black tracking-tight text-white uppercase">
             {WORKOUT_TYPES[workout.type]} Run
@@ -98,17 +98,17 @@ export default function WorkoutDetailPage() {
       </section>
 
       {/* Map */}
-      <section className="mb-8">
+      <section className="mb-8 animate-fade-in-up">
         <RouteMap points={hasGps ? workout.gpsPoints! : []} />
       </section>
 
       {/* Main metrics */}
-      <section className="grid grid-cols-3 gap-4 mb-8">
+      <section className="grid grid-cols-3 gap-4 mb-8 animate-fade-in-up">
         <div className="bg-surface-container-low rounded-2xl p-5 flex flex-col items-center justify-center h-32">
           <span className="font-[family-name:var(--font-label)] text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-2">
             Dystans
           </span>
-          <span className="font-[family-name:var(--font-lexend)] text-2xl font-black text-white">
+          <span className="font-[family-name:var(--font-lexend)] text-2xl font-black text-accent-green">
             {workout.distance}
           </span>
           <span className="font-[family-name:var(--font-label)] text-[10px] text-on-surface-variant">
@@ -120,7 +120,7 @@ export default function WorkoutDetailPage() {
           <span className="font-[family-name:var(--font-label)] text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-2">
             Tempo
           </span>
-          <span className="font-[family-name:var(--font-lexend)] text-2xl font-black text-white">
+          <span className="font-[family-name:var(--font-lexend)] text-2xl font-black text-accent-orange">
             {formatPace(workout.pace)}
           </span>
           <span className="font-[family-name:var(--font-label)] text-[10px] text-on-surface-variant">
@@ -132,21 +132,21 @@ export default function WorkoutDetailPage() {
           <span className="font-[family-name:var(--font-label)] text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-2">
             Czas
           </span>
-          <span className="font-[family-name:var(--font-lexend)] text-2xl font-black text-white">
+          <span className="font-[family-name:var(--font-lexend)] text-2xl font-black text-accent-blue">
             {formatDuration(workout.duration)}
           </span>
         </div>
       </section>
 
       {/* Secondary metrics */}
-      <section className="grid grid-cols-2 gap-4 mb-8">
+      <section className="grid grid-cols-2 gap-4 mb-8 animate-fade-in-up">
         <div className="bg-surface-container rounded-2xl p-5">
           <span className="font-[family-name:var(--font-label)] text-[10px] font-bold tracking-widest text-on-surface-variant uppercase block mb-2">
             Kalorie
           </span>
           <div className="flex items-center gap-2">
             <span className="text-lg">🔥</span>
-            <span className="font-[family-name:var(--font-lexend)] text-xl font-bold text-white">
+            <span className="font-[family-name:var(--font-lexend)] text-xl font-bold text-accent-orange">
               {calories}
             </span>
             <span className="font-[family-name:var(--font-label)] text-[10px] text-on-surface-variant">
@@ -163,23 +163,6 @@ export default function WorkoutDetailPage() {
             {WORKOUT_TYPES[workout.type]}
           </span>
         </div>
-
-        {hasGps && (
-          <div className="bg-surface-container rounded-2xl p-5 col-span-2">
-            <span className="font-[family-name:var(--font-label)] text-[10px] font-bold tracking-widest text-on-surface-variant uppercase block mb-2">
-              Punkty GPS
-            </span>
-            <div className="flex items-center gap-2">
-              <span className="text-lg">📍</span>
-              <span className="font-[family-name:var(--font-lexend)] text-xl font-bold text-white">
-                {workout.gpsPoints!.length}
-              </span>
-              <span className="font-[family-name:var(--font-label)] text-[10px] text-on-surface-variant">
-                points recorded
-              </span>
-            </div>
-          </div>
-        )}
       </section>
 
       {/* Notes */}

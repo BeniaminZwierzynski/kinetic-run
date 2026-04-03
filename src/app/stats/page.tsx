@@ -25,22 +25,22 @@ export default function Stats() {
   return (
     <div>
       {/* Header */}
-      <section className="mb-12">
+      <section className="mb-12 animate-fade-in-up">
         <p className="font-[family-name:var(--font-label)] text-sm uppercase tracking-[0.3em] text-on-surface-variant mb-2">
           Analytics
         </p>
-        <h2 className="font-[family-name:var(--font-lexend)] text-5xl font-black tracking-tight text-white leading-none">
+        <h2 className="font-[family-name:var(--font-lexend)] text-5xl font-black tracking-tight text-accent-purple leading-none">
           STATS
         </h2>
       </section>
 
       {/* Overview Cards */}
-      <div className="grid grid-cols-2 gap-4 mb-12">
+      <div className="grid grid-cols-2 gap-4 mb-12 animate-fade-in-up stagger">
         <div className="bg-surface-container-low p-6 rounded-2xl flex flex-col justify-between h-36">
           <span className="font-[family-name:var(--font-label)] text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">
             Total Runs
           </span>
-          <span className="font-[family-name:var(--font-lexend)] text-4xl font-black text-white">
+          <span className="font-[family-name:var(--font-lexend)] text-4xl font-black text-accent-blue">
             {workouts.length}
           </span>
         </div>
@@ -49,7 +49,7 @@ export default function Stats() {
             Total Distance
           </span>
           <div className="flex items-baseline gap-1">
-            <span className="font-[family-name:var(--font-lexend)] text-4xl font-black text-white">
+            <span className="font-[family-name:var(--font-lexend)] text-4xl font-black text-accent-green">
               {totalDistance.toFixed(1)}
             </span>
             <span className="text-on-surface-variant text-sm">KM</span>
@@ -60,7 +60,7 @@ export default function Stats() {
             Avg Pace
           </span>
           <div className="flex items-baseline gap-1">
-            <span className="font-[family-name:var(--font-lexend)] text-4xl font-black text-white">
+            <span className="font-[family-name:var(--font-lexend)] text-4xl font-black text-accent-orange">
               {avgPace > 0 ? formatPace(avgPace) : "- -"}
             </span>
             <span className="text-on-surface-variant text-sm">/KM</span>
@@ -71,7 +71,7 @@ export default function Stats() {
             Total Time
           </span>
           <div>
-            <span className="font-[family-name:var(--font-lexend)] text-4xl font-black text-white">
+            <span className="font-[family-name:var(--font-lexend)] text-4xl font-black text-accent-blue">
               {Math.floor(totalTime / 60)}
             </span>
             <span className="text-on-surface-variant text-sm ml-1">hrs</span>
@@ -83,7 +83,7 @@ export default function Stats() {
           </span>
           <div className="flex items-baseline gap-2">
             <span className="text-2xl">🔥</span>
-            <span className="font-[family-name:var(--font-lexend)] text-5xl font-black text-white">
+            <span className="font-[family-name:var(--font-lexend)] text-5xl font-black text-accent-orange">
               {totalCalories.toLocaleString()}
             </span>
             <span className="text-on-surface-variant text-sm">KCAL</span>
@@ -93,7 +93,7 @@ export default function Stats() {
 
       {/* Pace Trend */}
       {recentRuns.length > 1 && (
-        <section className="mb-12">
+        <section className="mb-12 animate-fade-in-up">
           <h3 className="font-[family-name:var(--font-lexend)] font-bold text-lg text-white uppercase tracking-wider mb-6 px-2">
             Pace Trend
           </h3>
@@ -111,7 +111,7 @@ export default function Stats() {
                       {formatPace(w.pace)}
                     </span>
                     <div
-                      className="w-full bg-primary rounded-t-full transition-all"
+                      className="w-full bg-accent-green rounded-t-full transition-all"
                       style={{ height: `${height}%`, opacity: 0.4 + (i / recentRuns.length) * 0.6 }}
                     />
                     <span className="text-[9px] text-zinc-500">

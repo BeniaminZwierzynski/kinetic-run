@@ -26,7 +26,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </header>
       )}
 
-      <main className={isAuthPage ? "px-6 max-w-2xl mx-auto" : "pt-24 pb-8 px-6 max-w-2xl mx-auto"}>
+      <main className={isAuthPage ? "px-6 max-w-2xl mx-auto animate-fade-in" : "pt-24 pb-8 px-6 max-w-2xl mx-auto animate-fade-in"}>
         <AuthGuard>{children}</AuthGuard>
       </main>
 

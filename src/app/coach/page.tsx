@@ -25,19 +25,19 @@ function timeAgo(timestamp: number): string {
 }
 
 const TYPE_COLORS: Record<CoachMessage["type"], string> = {
-  motivation: "bg-green-900/30",
-  warning: "bg-amber-900/30",
-  challenge: "bg-purple-900/30",
-  record: "bg-yellow-900/30",
-  tip: "bg-blue-900/30",
+  motivation: "bg-accent-green/20",
+  warning: "bg-accent-orange/20",
+  challenge: "bg-accent-purple/20",
+  record: "bg-accent-yellow/20",
+  tip: "bg-accent-blue/20",
 };
 
 const TYPE_BORDERS: Record<CoachMessage["type"], string> = {
-  motivation: "border-l-green-500",
-  warning: "border-l-amber-500",
-  challenge: "border-l-purple-500",
-  record: "border-l-yellow-500",
-  tip: "border-l-blue-500",
+  motivation: "border-l-accent-green",
+  warning: "border-l-accent-orange",
+  challenge: "border-l-accent-purple",
+  record: "border-l-accent-yellow",
+  tip: "border-l-accent-blue",
 };
 
 export default function CoachPage() {
@@ -98,7 +98,7 @@ export default function CoachPage() {
   return (
     <div>
       {/* Header */}
-      <section className="mb-8">
+      <section className="mb-8 animate-fade-in-up">
         <p className="font-[family-name:var(--font-label)] text-sm uppercase tracking-[0.3em] text-on-surface-variant mb-2">
           Personal
         </p>
@@ -108,7 +108,7 @@ export default function CoachPage() {
       </section>
 
       {/* Coach Avatar & Status */}
-      <section className="bg-surface-container-low rounded-2xl p-6 mb-6 relative overflow-hidden">
+      <section className="bg-surface-container-low rounded-2xl p-6 mb-6 relative overflow-hidden animate-fade-in-up">
         <div className="relative z-10 flex items-center gap-4">
           <div className="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center text-3xl">
             🏋️
@@ -218,7 +218,7 @@ export default function CoachPage() {
       )}
 
       {/* Messages Feed */}
-      <section>
+      <section className="animate-fade-in-up">
         <h4 className="font-[family-name:var(--font-lexend)] text-sm font-bold text-on-surface-variant uppercase tracking-widest mb-4 px-1">
           Wiadomości od trenera
         </h4>
@@ -231,11 +231,11 @@ export default function CoachPage() {
             </p>
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-3 stagger">
             {messages.map((msg) => (
               <div
                 key={msg.id}
-                className={`${TYPE_COLORS[msg.type]} border-l-4 ${TYPE_BORDERS[msg.type]} rounded-2xl p-5 transition-all`}
+                className={`${TYPE_COLORS[msg.type]} border-l-4 ${TYPE_BORDERS[msg.type]} rounded-2xl p-5 transition-all animate-fade-in-up`}
               >
                 <div className="flex items-start gap-3">
                   <span className="text-2xl flex-shrink-0 mt-0.5">{msg.icon}</span>

@@ -192,7 +192,7 @@ export default function ActiveRun() {
 
         <button
           onClick={handleStart}
-          className="w-48 h-48 rounded-full bg-gradient-to-b from-primary to-primary-container text-on-primary font-[family-name:var(--font-lexend)] font-black text-3xl tracking-widest shadow-[0_20px_60px_rgba(255,255,255,0.2)] active:scale-95 transition-all duration-300 flex items-center justify-center"
+          className="w-48 h-48 rounded-full bg-gradient-to-b from-accent-green to-accent-green-dim text-white font-[family-name:var(--font-lexend)] font-black text-3xl tracking-widest shadow-[0_20px_60px_rgba(255,255,255,0.2)] active:scale-95 transition-all duration-300 flex items-center justify-center"
         >
           START
         </button>
@@ -215,7 +215,7 @@ export default function ActiveRun() {
         <div
           className={`w-2 h-2 rounded-full ${
             gpsStatus === "active"
-              ? "bg-green-500 animate-pulse"
+              ? "bg-accent-green animate-pulse"
               : gpsStatus === "error"
               ? "bg-red-500"
               : "bg-yellow-500 animate-pulse"
@@ -228,7 +228,7 @@ export default function ActiveRun() {
       </div>
 
       {/* Main Timer */}
-      <section className="mb-8">
+      <section className="mb-8 animate-fade-in-up">
         <span className="font-[family-name:var(--font-label)] text-[10px] font-bold tracking-[0.4em] text-on-surface-variant uppercase mb-2 block">
           Czas treningu
         </span>
@@ -238,12 +238,12 @@ export default function ActiveRun() {
       </section>
 
       {/* Distance */}
-      <section className="mb-8">
+      <section className="mb-8 animate-fade-in-up">
         <span className="font-[family-name:var(--font-label)] text-[10px] font-bold tracking-[0.4em] text-on-surface-variant uppercase mb-2 block">
           Dystans
         </span>
         <div className="flex items-baseline gap-2">
-          <span className="font-[family-name:var(--font-lexend)] text-5xl font-bold text-white">
+          <span className="font-[family-name:var(--font-lexend)] text-5xl font-bold text-accent-green">
             {dist.toFixed(2)}
           </span>
           <span className="font-[family-name:var(--font-label)] text-sm font-bold text-on-surface-variant">
@@ -253,12 +253,12 @@ export default function ActiveRun() {
       </section>
 
       {/* Current Pace - Large */}
-      <section className="bg-surface-container-low rounded-2xl p-6 mb-6">
+      <section className="bg-surface-container-low rounded-2xl p-6 mb-6 animate-fade-in-up">
         <span className="font-[family-name:var(--font-label)] text-[10px] font-bold tracking-[0.4em] text-on-surface-variant uppercase mb-2 block">
           Aktualne tempo
         </span>
         <div className="flex items-baseline gap-2">
-          <span className="font-[family-name:var(--font-lexend)] text-7xl font-extrabold text-white tracking-tighter">
+          <span className="font-[family-name:var(--font-lexend)] text-7xl font-extrabold text-accent-orange tracking-tighter">
             {formatPace(curPace)}
           </span>
           <span className="font-[family-name:var(--font-label)] text-sm font-bold text-on-surface-variant">
@@ -287,8 +287,8 @@ export default function ActiveRun() {
         </div>
       </section>
 
-      {/* HR + Calories row */}
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      {/* Calories */}
+      <div className="mb-8 animate-fade-in-up">
         <div className="bg-surface-container rounded-2xl p-4 text-center">
           <span className="font-[family-name:var(--font-label)] text-[10px] font-bold tracking-widest text-on-surface-variant uppercase block mb-2">
             Kalorie
@@ -303,24 +303,13 @@ export default function ActiveRun() {
             </span>
           </div>
         </div>
-        <div className="bg-surface-container rounded-2xl p-4 text-center">
-          <span className="font-[family-name:var(--font-label)] text-[10px] font-bold tracking-widest text-on-surface-variant uppercase block mb-2">
-            Punkty GPS
-          </span>
-          <div className="flex items-center justify-center gap-2">
-            <span className="text-on-surface-variant">📍</span>
-            <span className="font-[family-name:var(--font-lexend)] text-xl font-bold text-white">
-              {points.length}
-            </span>
-          </div>
-        </div>
       </div>
 
       {/* Action buttons */}
       <div className="flex gap-4 mt-auto">
         <button
           onClick={handleFinish}
-          className="flex-1 py-5 bg-red-900/80 hover:bg-red-800 text-white rounded-full font-[family-name:var(--font-lexend)] font-black text-base tracking-widest uppercase flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-300"
+          className="flex-1 py-5 bg-red-600/80 hover:bg-red-500 text-white rounded-full font-[family-name:var(--font-lexend)] font-black text-base tracking-widest uppercase flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-300"
         >
           <span>◻</span> Zakoncz
         </button>
@@ -335,7 +324,7 @@ export default function ActiveRun() {
         ) : (
           <button
             onClick={handleResume}
-            className="flex-1 py-5 bg-gradient-to-b from-primary to-primary-container text-on-primary rounded-full font-[family-name:var(--font-lexend)] font-black text-base tracking-widest uppercase flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-300"
+            className="flex-1 py-5 bg-gradient-to-b from-accent-green to-accent-green-dim text-white rounded-full font-[family-name:var(--font-lexend)] font-black text-base tracking-widest uppercase flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-300"
           >
             <span>▶</span> Wznow
           </button>

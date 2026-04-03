@@ -23,7 +23,7 @@ export default function BottomNav() {
             href={item.href}
             className={`flex flex-col items-center justify-center transition-all duration-300 ${
               isActive
-                ? "bg-white text-black rounded-full px-6 py-2 scale-110 shadow-xl"
+                ? "bg-accent-green text-on-primary rounded-full px-6 py-2 scale-110 shadow-xl"
                 : "text-zinc-500 hover:text-zinc-300 px-4 py-2"
             }`}
           >

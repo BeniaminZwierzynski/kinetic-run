@@ -28,18 +28,18 @@ export default function Logs() {
   return (
     <div>
       {/* Header */}
-      <section className="mb-12">
+      <section className="mb-12 animate-fade-in-up">
         <p className="font-[family-name:var(--font-label)] text-sm uppercase tracking-[0.3em] text-on-surface-variant mb-2">
           Performance Archive
         </p>
-        <h2 className="font-[family-name:var(--font-lexend)] text-5xl font-black tracking-tight text-white leading-none">
+        <h2 className="font-[family-name:var(--font-lexend)] text-5xl font-black tracking-tight text-accent-blue leading-none">
           LOGS
         </h2>
       </section>
 
       {/* Stats Overview */}
       <div className="grid grid-cols-2 gap-4 mb-12">
-        <div className="bg-surface-container-low p-6 rounded-2xl flex flex-col justify-between h-32">
+        <div className="bg-surface-container-low p-6 rounded-2xl flex flex-col justify-between h-32 border-l-4 border-accent-blue">
           <span className="font-[family-name:var(--font-label)] text-xs uppercase tracking-widest text-on-surface-variant">
             Total Distance
           </span>
@@ -50,7 +50,7 @@ export default function Logs() {
             <span className="font-[family-name:var(--font-label)] text-xs text-on-surface-variant">KM</span>
           </div>
         </div>
-        <div className="bg-surface-container-low p-6 rounded-2xl flex flex-col justify-between h-32">
+        <div className="bg-surface-container-low p-6 rounded-2xl flex flex-col justify-between h-32 border-l-4 border-accent-orange">
           <span className="font-[family-name:var(--font-label)] text-xs uppercase tracking-widest text-on-surface-variant">
             Avg Pace
           </span>
@@ -69,12 +69,12 @@ export default function Logs() {
           <p className="text-on-surface-variant">No runs logged yet.</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-4 stagger">
           {sorted.map((w) => (
             <div
               key={w.id}
               onClick={() => router.push(`/logs/${w.id}`)}
-              className="group bg-surface-container p-4 rounded-2xl cursor-pointer hover:bg-surface-container-high transition-all duration-300"
+              className="group bg-surface-container p-4 rounded-2xl cursor-pointer hover:bg-surface-container-high transition-all duration-300 animate-fade-in-up"
             >
               <div className="flex justify-between items-start mb-3">
                 <div>

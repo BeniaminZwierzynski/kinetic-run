@@ -50,12 +50,12 @@ export default function AddWorkout() {
         <p className="font-[family-name:var(--font-label)] text-sm uppercase tracking-[0.3em] text-on-surface-variant mb-2">
           New Entry
         </p>
-        <h2 className="font-[family-name:var(--font-lexend)] text-4xl font-black tracking-tight text-white leading-none">
+        <h2 className="font-[family-name:var(--font-lexend)] text-4xl font-black tracking-tight text-accent-green leading-none">
           LOG RUN
         </h2>
       </section>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in-up">
         {/* Date */}
         <div>
           <label className="block text-[10px] font-bold tracking-[0.2em] text-on-surface-variant uppercase mb-2 font-[family-name:var(--font-label)]">
@@ -146,7 +146,7 @@ export default function AddWorkout() {
                   onClick={() => setType(key)}
                   className={`px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-widest transition-all duration-300 font-[family-name:var(--font-lexend)] ${
                     type === key
-                      ? "bg-primary text-on-primary shadow-xl scale-105"
+                      ? "bg-accent-green text-on-primary shadow-xl scale-105"
                       : "bg-surface-container-highest text-on-surface-variant hover:bg-surface-bright"
                   }`}
                 >
@@ -174,7 +174,7 @@ export default function AddWorkout() {
         {/* Submit */}
         <button
           type="submit"
-          className="w-full py-5 bg-gradient-to-b from-primary to-primary-container text-on-primary font-[family-name:var(--font-lexend)] font-black text-xl tracking-widest rounded-full shadow-[0_20px_50px_rgba(255,255,255,0.15)] active:scale-[0.98] transition-all duration-300 uppercase"
+          className="w-full py-5 bg-gradient-to-b from-accent-green to-accent-green-dim text-white font-[family-name:var(--font-lexend)] font-black text-xl tracking-widest rounded-full shadow-[0_20px_50px_rgba(255,255,255,0.15)] active:scale-[0.98] transition-all duration-300 uppercase"
         >
           Save Run
         </button>
