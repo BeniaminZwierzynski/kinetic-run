@@ -163,7 +163,7 @@ export default function ActiveRun() {
           duration: Math.round(totalMin),
           pace: Math.round(pace * 100) / 100,
           type: "easy",
-          notes: `GPS tracked - ${points.length} points`,
+          notes: undefined,
         },
         points
       );

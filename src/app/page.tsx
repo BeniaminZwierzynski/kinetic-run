@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Workout } from "@/types/workout";
 import { useWorkouts } from "@/lib/use-workouts";
 import { CoachMessage, generateCoachMessages, setupInactivityCheck } from "@/lib/coach";
+import CoachChat from "@/components/CoachChat";
 import Link from "next/link";
 
 function formatPace(pace: number): string {
@@ -139,6 +140,9 @@ export default function Dashboard() {
           </div>
         </Link>
       )}
+
+      {/* Coach Chat Widget */}
+      <CoachChat workouts={workouts} />
 
       {/* Last Run Preview */}
       <section className="mb-8 animate-fade-in-up">

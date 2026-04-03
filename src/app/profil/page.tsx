@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useWorkouts } from "@/lib/use-workouts";
 import { useAuth } from "@/lib/auth-context";
 import { supabase } from "@/lib/supabase";
+import { getGearFromDB, saveGearToDB, deleteGearFromDB, GearItem } from "@/lib/storage";
 import { Workout } from "@/types/workout";
 
 function formatPace(pace: number): string {
@@ -25,6 +26,11 @@ export default function Profile() {
   const [height, setHeight] = useState<number | null>(null);
   const [weight, setWeight] = useState<number | null>(null);
   const [editMode, setEditMode] = useState(false);
+  const [gear, setGear] = useState<GearItem[]>([]);
+  const [showGearForm, setShowGearForm] = useState(false);
+  const [gearType, setGearType] = useState<"watch" | "shoes">("shoes");
+  const [gearBrand, setGearBrand] = useState("");
+  const [gearModel, setGearModel] = useState("");
 
   useEffect(() => {
     if (!user) return;
@@ -35,7 +41,29 @@ export default function Profile() {
           setWeight(data.weight);
         }
       });
+    getGearFromDB(user.id).then(setGear);
   }, [user]);
+
+  async function handleAddGear() {
+    if (!user || !gearBrand.trim() || !gearModel.trim()) return;
+    const saved = await saveGearToDB(user.id, {
+      type: gearType,
+      brand: gearBrand.trim(),
+      model: gearModel.trim(),
+      active: true,
+    });
+    if (saved) {
+      setGear((prev) => [saved, ...prev]);
+      setGearBrand("");
+      setGearModel("");
+      setShowGearForm(false);
+    }
+  }
+
+  async function handleDeleteGear(id: string) {
+    await deleteGearFromDB(id);
+    setGear((prev) => prev.filter((g) => g.id !== id));
+  }
 
   async function saveProfile() {
     if (!user) return;
@@ -138,6 +166,98 @@ export default function Profile() {
             )}
           </div>
         </div>
+      </section>
+
+      {/* Gear */}
+      <section className="mb-8 animate-fade-in-up">
+        <div className="flex items-center justify-between mb-4 px-2">
+          <h3 className="font-[family-name:var(--font-lexend)] font-bold text-lg text-white uppercase tracking-wider">
+            Sprzet
+          </h3>
+          <button
+            onClick={() => setShowGearForm(!showGearForm)}
+            className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-white transition-colors font-[family-name:var(--font-lexend)]"
+          >
+            {showGearForm ? "Anuluj" : "+ Dodaj"}
+          </button>
+        </div>
+
+        {/* Add gear form */}
+        {showGearForm && (
+          <div className="bg-surface-container rounded-2xl p-5 mb-4 space-y-4">
+            <div className="flex gap-2">
+              {(["shoes", "watch"] as const).map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setGearType(t)}
+                  className={`flex-1 py-3 rounded-full text-sm font-bold transition-all font-[family-name:var(--font-lexend)] uppercase tracking-widest ${
+                    gearType === t
+                      ? "bg-primary text-on-primary"
+                      : "bg-surface-container-highest text-on-surface-variant"
+                  }`}
+                >
+                  {t === "shoes" ? "Buty" : "Zegarek"}
+                </button>
+              ))}
+            </div>
+            <input
+              type="text"
+              placeholder="Marka (np. Nike, Garmin)"
+              value={gearBrand}
+              onChange={(e) => setGearBrand(e.target.value)}
+              className="w-full bg-surface-container-high text-white rounded-full px-5 py-3 text-sm focus:outline-none focus:bg-surface-bright transition-colors placeholder:text-on-surface-variant/50"
+            />
+            <input
+              type="text"
+              placeholder="Model (np. Pegasus 41, Forerunner 265)"
+              value={gearModel}
+              onChange={(e) => setGearModel(e.target.value)}
+              className="w-full bg-surface-container-high text-white rounded-full px-5 py-3 text-sm focus:outline-none focus:bg-surface-bright transition-colors placeholder:text-on-surface-variant/50"
+            />
+            <button
+              onClick={handleAddGear}
+              className="w-full py-3 bg-accent-green text-white rounded-full font-[family-name:var(--font-lexend)] font-bold text-sm uppercase tracking-widest active:scale-[0.98] transition-all"
+            >
+              Zapisz
+            </button>
+          </div>
+        )}
+
+        {/* Gear list */}
+        {gear.length === 0 && !showGearForm ? (
+          <div className="bg-surface-container-low rounded-2xl p-6 text-center">
+            <p className="text-on-surface-variant text-sm">
+              Brak sprzetu. Dodaj swoje buty lub zegarek.
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {gear.map((g) => (
+              <div
+                key={g.id}
+                className="bg-surface-container-low rounded-2xl p-5 flex items-center gap-4"
+              >
+                <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-2xl">
+                  {g.type === "shoes" ? "👟" : "⌚"}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-[family-name:var(--font-lexend)] text-sm font-bold text-white">
+                    {g.brand} {g.model}
+                  </p>
+                  <p className="text-on-surface-variant text-xs uppercase tracking-widest">
+                    {g.type === "shoes" ? "Buty" : "Zegarek"}
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleDeleteGear(g.id)}
+                  className="text-on-surface-variant hover:text-red-400 text-xs transition-colors"
+                >
+                  Usun
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Weekly Activity */}

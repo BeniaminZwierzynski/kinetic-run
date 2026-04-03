@@ -323,6 +323,79 @@ export async function sendNotification(
   }
 }
 
+// ---- Chat responses ----
+
+const CHAT_RESPONSES: Record<string, string[]> = {
+  cel: [
+    "Swietny cel! Zacznij od malych krokow - dodaj 10% dystansu tygodniowo. Twoje cialo potrzebuje czasu na adaptacje.",
+    "Cele sa wazne! Zapisz go i wracaj do niego co tydzien. Regularne sprawdzanie postepu motywuje.",
+    "Pamietaj - cel powinien byc SMART: konkretny, mierzalny, osiagalny, istotny i okreslony w czasie.",
+  ],
+  tempo: [
+    "Chcesz poprawic tempo? Dodaj 1 trening interwalowy tygodniowo. Np. 6x400m z 90s odpoczynku.",
+    "Tempo przychodzi z czasem. Najpierw buduj baze - biegnij wolno ale dalej. Tempo przyjdzie samo.",
+    "Fartleki sa swietne na tempo! Biegnij normalnie, co 3-5 min przyspieszaj na 30-60 sekund.",
+  ],
+  dystans: [
+    "Chcesz biegac dalej? Zasada 10% - nie zwiekszaj tygodniowego dystansu o wiecej niz 10%.",
+    "Dlugie biegi robimy raz w tygodniu, w wolnym tempie. To buduje wytrzymalosc bez ryzyka kontuzji.",
+    "Pamietaj o nawodnieniu na dluzszych biegach. Po 60 minutach warto wziac izotonik.",
+  ],
+  kontuzja: [
+    "Przerwa w biegu? Nie panikoj! Daj cialu czas na regeneracje. Mozesz robic cwiczenia wzmacniajace.",
+    "Bol to sygnał. Nie biegnij przez bol! Lepiej odpoczac 3 dni niz byc kontuzjowanym 3 miesiace.",
+    "Stretching i rolowanie po kazdym treningu zmniejsza ryzyko kontuzji o 50%.",
+  ],
+  motywacja: [
+    "Brak motywacji? To normalne! Zaloz buty i wyjdz na 5 minut. Potem zdecydujesz czy biegac dalej.",
+    "Pamietaj DLACZEGO zaczales biegac. Zapisz to. W ciezkich dniach wroc do tej notatki.",
+    "Znajdz partnera do biegania. Trudniej sie wymigac gdy ktos na Ciebie czeka!",
+  ],
+};
+
+const GENERIC_RESPONSES = [
+  "Dobrze, ze o tym mowisz! Kontynuuj treningi a efekty przyjda.",
+  "Kazdy krok sie liczy. Najwazniejsze to nie przestawac.",
+  "Pamietaj - konsekwencja jest wazniejsza od intensywnosci!",
+  "Wspaniale! Bieganie to najlepsza inwestycja w zdrowie.",
+  "Chetnie pomoge! Opowiedz wiecej o swoim treningu.",
+  "Regularnosc to klucz do sukcesu. Biegnij przynajmniej 3 razy w tygodniu.",
+];
+
+export function getCoachReply(message: string, workouts: Workout[]): string {
+  const lower = message.toLowerCase();
+  const settings = getCoachSettings();
+
+  // Check for keyword matches
+  for (const [keyword, responses] of Object.entries(CHAT_RESPONSES)) {
+    if (lower.includes(keyword)) {
+      return pick(responses);
+    }
+  }
+
+  // Stats-based responses
+  if (lower.includes("ile") || lower.includes("statystyk") || lower.includes("progress")) {
+    const totalKm = workouts.reduce((s, w) => s + w.distance, 0);
+    const avgPace = workouts.length > 0
+      ? workouts.reduce((s, w) => s + w.pace, 0) / workouts.length
+      : 0;
+    if (workouts.length === 0) {
+      return "Nie masz jeszcze zadnych treningow. Czas to zmienic!";
+    }
+    return `Masz ${workouts.length} treningow, lacznie ${totalKm.toFixed(1)} km. Srednie tempo: ${formatPace(avgPace)}/km. Swietnie Ci idzie!`;
+  }
+
+  if (lower.includes("rekord") || lower.includes("najlep")) {
+    if (workouts.length === 0) return "Zacznij biegac, a rekordy przyjda!";
+    const bestPace = Math.min(...workouts.map(w => w.pace));
+    const longestRun = Math.max(...workouts.map(w => w.distance));
+    return `Twoje rekordy: najlepsze tempo ${formatPace(bestPace)}/km, najdluzszy bieg ${longestRun.toFixed(1)} km. Pobij je!`;
+  }
+
+  // Generic
+  return pick(GENERIC_RESPONSES);
+}
+
 /**
  * Setup periodic inactivity check (runs every hour when app is open).
  */
