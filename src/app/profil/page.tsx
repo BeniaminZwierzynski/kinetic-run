@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getWorkouts } from "@/lib/storage";
+import { useWorkouts } from "@/lib/use-workouts";
+import { useAuth } from "@/lib/auth-context";
 import { Workout } from "@/types/workout";
 
 function formatPace(pace: number): string {
@@ -18,11 +19,8 @@ function getWeekStart(): string {
 }
 
 export default function Profile() {
-  const [workouts, setWorkouts] = useState<Workout[]>([]);
-
-  useEffect(() => {
-    setWorkouts(getWorkouts());
-  }, []);
+  const { workouts } = useWorkouts();
+  const { user, signOut } = useAuth();
 
   const totalDistance = workouts.reduce((sum, w) => sum + w.distance, 0);
   const weekStart = getWeekStart();
@@ -54,7 +52,7 @@ export default function Profile() {
       {/* Hero */}
       <section className="mb-10 text-left">
         <h2 className="font-[family-name:var(--font-lexend)] font-extrabold text-4xl tracking-tight text-white mb-1">
-          Runner
+          {user?.user_metadata?.display_name || "Runner"}
         </h2>
         <p className="text-on-surface-variant font-medium tracking-wide uppercase text-xs">
           {workouts.length} runs logged
@@ -178,6 +176,16 @@ export default function Profile() {
           <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/5 rounded-full blur-[60px]" />
         </section>
       )}
+
+      {/* Sign out */}
+      <section className="mb-12 text-center">
+        <button
+          onClick={signOut}
+          className="px-8 py-3 rounded-full bg-surface-container-highest text-on-surface-variant text-sm font-bold hover:bg-surface-bright transition-all font-[family-name:var(--font-lexend)] uppercase tracking-widest"
+        >
+          Wyloguj
+        </button>
+      </section>
     </div>
   );
 }

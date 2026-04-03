@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getWorkouts, deleteWorkout } from "@/lib/storage";
+import { useState } from "react";
+import { useWorkouts } from "@/lib/use-workouts";
 import { Workout, WORKOUT_TYPES } from "@/types/workout";
 
 function formatPace(pace: number): string {
@@ -11,26 +11,18 @@ function formatPace(pace: number): string {
 }
 
 export default function Logs() {
-  const [workouts, setWorkouts] = useState<Workout[]>([]);
+  const { workouts, removeWorkout } = useWorkouts();
 
-  useEffect(() => {
-    loadWorkouts();
-  }, []);
+  const sorted = [...workouts].sort((a, b) => b.date.localeCompare(a.date));
 
-  function loadWorkouts() {
-    const data = getWorkouts().sort((a, b) => b.date.localeCompare(a.date));
-    setWorkouts(data);
-  }
-
-  function handleDelete(id: string) {
+  async function handleDelete(id: string) {
     if (confirm("Delete this run?")) {
-      deleteWorkout(id);
-      loadWorkouts();
+      await removeWorkout(id);
     }
   }
 
-  const totalDistance = workouts.reduce((sum, w) => sum + w.distance, 0);
-  const avgPace = workouts.length > 0 ? workouts.reduce((sum, w) => sum + w.pace, 0) / workouts.length : 0;
+  const totalDistance = sorted.reduce((sum, w) => sum + w.distance, 0);
+  const avgPace = sorted.length > 0 ? sorted.reduce((sum, w) => sum + w.pace, 0) / sorted.length : 0;
 
   return (
     <div>
@@ -71,13 +63,13 @@ export default function Logs() {
       </div>
 
       {/* History List */}
-      {workouts.length === 0 ? (
+      {sorted.length === 0 ? (
         <div className="bg-surface-container rounded-2xl p-8 text-center">
           <p className="text-on-surface-variant">No runs logged yet.</p>
         </div>
       ) : (
         <div className="space-y-4">
-          {workouts.map((w) => (
+          {sorted.map((w) => (
             <div
               key={w.id}
               className="group bg-surface-container p-4 rounded-2xl cursor-pointer hover:bg-surface-container-high transition-all duration-300"

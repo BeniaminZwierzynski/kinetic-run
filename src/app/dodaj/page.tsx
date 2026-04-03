@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { saveWorkout, generateId } from "@/lib/storage";
+import { useWorkouts } from "@/lib/use-workouts";
 import { Workout, WORKOUT_TYPES } from "@/types/workout";
 
 export default function AddWorkout() {
   const router = useRouter();
+  const { addWorkout } = useWorkouts();
   const today = new Date().toISOString().split("T")[0];
 
   const [date, setDate] = useState(today);
@@ -17,7 +18,7 @@ export default function AddWorkout() {
   const [type, setType] = useState<Workout["type"]>("easy");
   const [notes, setNotes] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
     const dist = parseFloat(distance);
@@ -28,17 +29,15 @@ export default function AddWorkout() {
 
     const pace = totalMinutes / dist;
 
-    const workout: Workout = {
-      id: generateId(),
+    await addWorkout({
       date,
       distance: dist,
       duration: Math.round(totalMinutes),
       pace: Math.round(pace * 100) / 100,
       type,
       notes: notes || undefined,
-    };
+    });
 
-    saveWorkout(workout);
     router.push("/");
   }
 

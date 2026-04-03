@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { GeoPoint, totalDistance, currentPace, averagePace, lapPace } from "@/lib/geo";
-import { saveWorkout, generateId, getWorkouts } from "@/lib/storage";
+import { useWorkouts } from "@/lib/use-workouts";
+import { getWorkouts } from "@/lib/storage";
 import { Workout } from "@/types/workout";
 import { checkRecords } from "@/lib/coach";
 
@@ -28,6 +29,7 @@ function formatPace(pace: number): string {
 
 export default function ActiveRun() {
   const router = useRouter();
+  const { addWorkout, workouts: previousWorkouts } = useWorkouts();
 
   const [state, setState] = useState<RunState>("ready");
   const [elapsed, setElapsed] = useState(0);
@@ -146,7 +148,7 @@ export default function ActiveRun() {
     startTimer();
   }
 
-  function handleFinish() {
+  async function handleFinish() {
     stopGps();
     stopTimer();
 
@@ -154,21 +156,21 @@ export default function ActiveRun() {
       const totalMin = elapsed / 60;
       const pace = totalMin / dist;
 
-      const previousWorkouts = getWorkouts();
+      const workout = await addWorkout(
+        {
+          date: new Date().toISOString().split("T")[0],
+          distance: Math.round(dist * 100) / 100,
+          duration: Math.round(totalMin),
+          pace: Math.round(pace * 100) / 100,
+          type: "easy",
+          notes: `GPS tracked - ${points.length} points`,
+        },
+        points
+      );
 
-      const workout: Workout = {
-        id: generateId(),
-        date: new Date().toISOString().split("T")[0],
-        distance: Math.round(dist * 100) / 100,
-        duration: Math.round(totalMin),
-        pace: Math.round(pace * 100) / 100,
-        type: "easy",
-        notes: `GPS tracked - ${points.length} points`,
-      };
-      saveWorkout(workout);
-
-      // Check for new records
-      checkRecords(workout, previousWorkouts);
+      if (workout) {
+        checkRecords(workout, previousWorkouts);
+      }
     }
 
     router.push("/");

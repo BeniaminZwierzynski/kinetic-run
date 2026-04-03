@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getWorkouts } from "@/lib/storage";
+import { useState } from "react";
+import { useWorkouts } from "@/lib/use-workouts";
 import { Workout } from "@/types/workout";
 
 function formatPace(pace: number): string {
@@ -11,11 +11,8 @@ function formatPace(pace: number): string {
 }
 
 export default function Stats() {
-  const [workouts, setWorkouts] = useState<Workout[]>([]);
-
-  useEffect(() => {
-    setWorkouts(getWorkouts().sort((a, b) => a.date.localeCompare(b.date)));
-  }, []);
+  const { workouts: raw } = useWorkouts();
+  const workouts = [...raw].sort((a, b) => a.date.localeCompare(b.date));
 
   const totalDistance = workouts.reduce((sum, w) => sum + w.distance, 0);
   const totalTime = workouts.reduce((sum, w) => sum + w.duration, 0);

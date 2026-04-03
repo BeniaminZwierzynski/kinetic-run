@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getWorkouts } from "@/lib/storage";
 import { Workout } from "@/types/workout";
-import { CoachMessage, generateCoachMessages, getCoachSettings, setupInactivityCheck } from "@/lib/coach";
+import { useWorkouts } from "@/lib/use-workouts";
+import { CoachMessage, generateCoachMessages, setupInactivityCheck } from "@/lib/coach";
 import Link from "next/link";
 
 function formatPace(pace: number): string {
@@ -26,21 +26,16 @@ function getWeekStart(): string {
 }
 
 export default function Dashboard() {
-  const [workouts, setWorkouts] = useState<Workout[]>([]);
+  const { workouts } = useWorkouts();
   const [latestCoachMsg, setLatestCoachMsg] = useState<CoachMessage | null>(null);
 
   useEffect(() => {
-    const w = getWorkouts();
-    setWorkouts(w);
-
-    // Generate coach messages and get latest
-    const msgs = generateCoachMessages(w);
+    if (workouts.length === 0) return;
+    const msgs = generateCoachMessages(workouts);
     if (msgs.length > 0) setLatestCoachMsg(msgs[0]);
-
-    // Setup inactivity notifications
-    const cleanup = setupInactivityCheck(w);
+    const cleanup = setupInactivityCheck(workouts);
     return cleanup;
-  }, []);
+  }, [workouts]);
 
   const weekStart = getWeekStart();
   const weekWorkouts = workouts.filter((w) => w.date >= weekStart);
