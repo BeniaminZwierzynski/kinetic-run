@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import BottomNav from "./BottomNav";
 import AuthGuard from "./AuthGuard";
+import CoachChat from "./CoachChat";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
@@ -30,6 +31,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <AuthGuard>{children}</AuthGuard>
       </main>
 
+      {user && !isAuthPage && <CoachChat />}
       {user && !isAuthPage && <BottomNav />}
     </>
   );

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Workout } from "@/types/workout";
 import { getCoachReply, getCoachSettings } from "@/lib/coach";
+import { useWorkouts } from "@/lib/use-workouts";
 
 interface ChatMsg {
   id: string;
@@ -10,13 +10,18 @@ interface ChatMsg {
   text: string;
 }
 
-export default function CoachChat({ workouts }: { workouts: Workout[] }) {
+export default function CoachChat() {
+  const { workouts } = useWorkouts();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMsg[]>([]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const settings = getCoachSettings();
+  const [settings, setSettings] = useState({ name: "Coach K" });
+
+  useEffect(() => {
+    setSettings(getCoachSettings());
+  }, []);
 
   useEffect(() => {
     if (messages.length === 0 && open) {
@@ -45,7 +50,6 @@ export default function CoachChat({ workouts }: { workouts: Workout[] }) {
     setInput("");
     setTyping(true);
 
-    // Simulate typing delay
     setTimeout(() => {
       const reply = getCoachReply(userMsg.text, workouts);
       setMessages((prev) => [
