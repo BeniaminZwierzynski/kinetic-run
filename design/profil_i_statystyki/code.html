@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KINETIC | Athlete Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700;800;900&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ababab",
+                        "inverse-surface": "#e2e2e2",
+                        "primary": "#ffffff",
+                        "tertiary-fixed-dim": "#464747",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-tint": "#c6c6c7",
+                        "primary-container": "#d4d4d4",
+                        "tertiary": "#e3e2e2",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3a3c3c",
+                        "on-primary": "#1a1c1c",
+                        "surface-dim": "#131313",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e2e2e2",
+                        "on-error": "#690005",
+                        "on-tertiary": "#1a1c1c",
+                        "on-background": "#e2e2e2",
+                        "tertiary-fixed": "#5d5e5f",
+                        "inverse-primary": "#5d5f5f",
+                        "on-secondary": "#1a1c1c",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-tertiary-container": "#000000",
+                        "on-primary-container": "#000000",
+                        "surface-container": "#1f1f1f",
+                        "outline-variant": "#474747",
+                        "secondary-container": "#454747",
+                        "tertiary-container": "#909191",
+                        "inverse-on-surface": "#303030",
+                        "outline": "#919191",
+                        "on-tertiary-fixed-variant": "#e3e2e2",
+                        "primary-fixed-dim": "#454747",
+                        "on-tertiary-fixed": "#ffffff",
+                        "surface": "#131313",
+                        "surface-container-highest": "#353535",
+                        "surface-bright": "#393939",
+                        "background": "#131313",
+                        "on-primary-fixed-variant": "#e2e2e2",
+                        "on-secondary-container": "#e2e2e2",
+                        "surface-container-low": "#1b1b1b",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed": "#ffffff",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#5d5f5f",
+                        "secondary-fixed": "#c6c6c6",
+                        "on-surface-variant": "#c6c6c6",
+                        "secondary": "#c6c6c6",
+                        "surface-variant": "#353535"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Lexend"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; background-color: #131313; color: #e2e2e2; }
+        .font-lexend { font-family: 'Lexend', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#131313]/80 backdrop-blur-xl">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a determined female athlete with dark hair tied back, soft dramatic studio lighting on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUXp7r5XL74lW58qgJw105vXG7LzfIYdF-2usS8QxlijgAQcoN28qwsZgu43HbIE9DUuITUXx-bADDShP_8sZGtJ2Aj3punIo_w8yPkoBds-vxkW73PBiEUz4ZxykXUl9t_T9kb1IjCDggEjKcGm5-lqdh3Brw3hZfOHjNgCyOrDT9TT5I23DHN1RP57AJpMA4DTTgLRbcQU5GOuAu5leZIwliFFwATH6gthM2uX-lX5lK5IwEOEQNxOiRRr9XeWiuEA5Udu_MYeZB"/>
+</div>
+<h1 class="text-xl font-black tracking-[0.2em] text-white font-lexend uppercase">KINETIC</h1>
+</div>
+<button class="hover:opacity-80 transition-opacity duration-300 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-white" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-10 text-left">
+<h2 class="font-lexend font-extrabold text-4xl tracking-tight text-white mb-1">Alex Rivers</h2>
+<p class="text-on-surface-variant font-medium tracking-wide uppercase text-xs">Pro Marathoner • London, UK</p>
+</section>
+<!-- Weekly Activity Bento -->
+<section class="mb-8">
+<div class="bg-surface-container-low rounded-lg p-6 shadow-sm">
+<div class="flex justify-between items-end mb-8">
+<div>
+<p class="text-on-surface-variant text-[10px] font-bold tracking-[0.2em] uppercase mb-1">Weekly Volume</p>
+<h3 class="font-lexend text-3xl font-bold text-white">64.2 <span class="text-lg font-normal text-on-surface-variant uppercase">km</span></h3>
+</div>
+<div class="text-right">
+<span class="text-primary text-xs font-bold bg-surface-container-highest px-3 py-1 rounded-full">+12% vs LW</span>
+</div>
+</div>
+<!-- Activity Bar Chart -->
+<div class="flex items-end justify-between h-32 gap-2">
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-full h-[40%] transition-all"></div>
+<span class="text-[10px] font-bold text-zinc-500 uppercase">M</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-full h-[65%] transition-all"></div>
+<span class="text-[10px] font-bold text-zinc-500 uppercase">T</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-full h-[55%] transition-all"></div>
+<span class="text-[10px] font-bold text-zinc-500 uppercase">W</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary rounded-t-full h-[90%] transition-all"></div>
+<span class="text-[10px] font-bold text-white uppercase">T</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-full h-[45%] transition-all"></div>
+<span class="text-[10px] font-bold text-zinc-500 uppercase">F</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-full h-[30%] transition-all"></div>
+<span class="text-[10px] font-bold text-zinc-500 uppercase">S</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-full h-[75%] transition-all"></div>
+<span class="text-[10px] font-bold text-zinc-500 uppercase">S</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Personal Records Grid -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6 px-2">
+<h3 class="font-lexend font-bold text-lg text-white uppercase tracking-wider">Personal Records</h3>
+<span class="material-symbols-outlined text-zinc-600" data-icon="military_tech">military_tech</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- 5K Record -->
+<div class="bg-surface-container-lowest border border-outline-variant/10 rounded-lg p-5 flex flex-col justify-between h-36">
+<p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">5 Kilometers</p>
+<div>
+<p class="font-lexend text-3xl font-black text-white">18:42</p>
+<p class="text-[10px] font-medium text-zinc-400 mt-1">OCT 2023</p>
+</div>
+</div>
+<!-- 10K Record -->
+<div class="bg-surface-container-lowest border border-outline-variant/10 rounded-lg p-5 flex flex-col justify-between h-36">
+<p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">10 Kilometers</p>
+<div>
+<p class="font-lexend text-3xl font-black text-white">39:15</p>
+<p class="text-[10px] font-medium text-zinc-400 mt-1">DEC 2023</p>
+</div>
+</div>
+<!-- Half Marathon -->
+<div class="bg-surface-container-lowest border border-outline-variant/10 rounded-lg p-5 flex flex-col justify-between h-36">
+<p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">Half Marathon</p>
+<div>
+<p class="font-lexend text-3xl font-black text-white">1:28:04</p>
+<p class="text-[10px] font-medium text-zinc-400 mt-1">JAN 2024</p>
+</div>
+</div>
+<!-- Longest Run -->
+<div class="bg-surface-container-lowest border border-outline-variant/10 rounded-lg p-5 flex flex-col justify-between h-36">
+<p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">Max Distance</p>
+<div>
+<p class="font-lexend text-3xl font-black text-white">32.4<span class="text-sm font-light">km</span></p>
+<p class="text-[10px] font-medium text-zinc-400 mt-1">MAR 2024</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Athlete Insights (Tonal Shift Section) -->
+<section class="mb-12 bg-surface-container p-8 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary scale-90" data-icon="bolt">bolt</span>
+<h4 class="font-lexend font-bold text-white uppercase text-sm tracking-widest">Performance Insight</h4>
+</div>
+<p class="text-on-surface text-lg font-light leading-relaxed mb-6">
+                    Your average pace has increased by <span class="font-bold text-white">14s/km</span> over the last 30 days. You're peaking perfectly for your next race.
+                </p>
+<button class="bg-white text-black font-lexend font-extrabold text-[10px] tracking-[0.2em] uppercase px-6 py-3 rounded-full hover:opacity-90 transition-all">
+                    VIEW DETAILED TRENDS
+                </button>
+</div>
+<!-- Atmospheric Glow -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/5 rounded-full blur-[60px]"></div>
+</section>
+<!-- Achievements Horizontal Scroll -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-4 px-2">
+<h3 class="font-lexend font-bold text-sm text-zinc-400 uppercase tracking-widest">Recent Badges</h3>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+<div class="flex-shrink-0 w-24 h-24 rounded-full bg-surface-container-high flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex-shrink-0 w-24 h-24 rounded-full bg-surface-container-high flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-zinc-500 text-3xl" data-icon="timer">timer</span>
+</div>
+<div class="flex-shrink-0 w-24 h-24 rounded-full bg-surface-container-high flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-zinc-500 text-3xl" data-icon="terrain">terrain</span>
+</div>
+<div class="flex-shrink-0 w-24 h-24 rounded-full bg-surface-container-high flex items-center justify-center border border-white/5 opacity-50">
+<span class="material-symbols-outlined text-zinc-700 text-3xl" data-icon="emoji_events">emoji_events</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-[#131313]/90 backdrop-blur-2xl rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-zinc-500 hover:text-zinc-300 px-4 py-2 transition-all duration-300">
+<span class="material-symbols-outlined mb-1" data-icon="play_arrow">play_arrow</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">RUN</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-500 hover:text-zinc-300 px-4 py-2 transition-all duration-300">
+<span class="material-symbols-outlined mb-1" data-icon="insights">insights</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">STATS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-500 hover:text-zinc-300 px-4 py-2 transition-all duration-300">
+<span class="material-symbols-outlined mb-1" data-icon="history">history</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">LOGS</span>
+</div>
+<!-- ACTIVE TAB: USER/PROFILE -->
+<div class="flex flex-col items-center justify-center bg-white text-black rounded-full px-6 py-2 scale-110 shadow-xl transition-all">
+<span class="material-symbols-outlined mb-0.5" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">USER</span>
+</div>
+</nav>
+<!-- Decorative Elements (The Kinetic Void) -->
+<div class="fixed top-0 right-0 w-full h-full pointer-events-none z-[-1] opacity-20">
+<div class="absolute top-[20%] -right-20 w-[400px] h-[400px] bg-white/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[10%] -left-20 w-[300px] h-[300px] bg-white/5 rounded-full blur-[100px]"></div>
+</div>
+</body></html>

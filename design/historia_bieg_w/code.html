@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ababab",
+                        "inverse-surface": "#e2e2e2",
+                        "primary": "#ffffff",
+                        "tertiary-fixed-dim": "#464747",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-tint": "#c6c6c7",
+                        "primary-container": "#d4d4d4",
+                        "tertiary": "#e3e2e2",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3a3c3c",
+                        "on-primary": "#1a1c1c",
+                        "surface-dim": "#131313",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e2e2e2",
+                        "on-error": "#690005",
+                        "on-tertiary": "#1a1c1c",
+                        "on-background": "#e2e2e2",
+                        "tertiary-fixed": "#5d5e5f",
+                        "inverse-primary": "#5d5f5f",
+                        "on-secondary": "#1a1c1c",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-tertiary-container": "#000000",
+                        "on-primary-container": "#000000",
+                        "surface-container": "#1f1f1f",
+                        "outline-variant": "#474747",
+                        "secondary-container": "#454747",
+                        "tertiary-container": "#909191",
+                        "inverse-on-surface": "#303030",
+                        "outline": "#919191",
+                        "on-tertiary-fixed-variant": "#e3e2e2",
+                        "primary-fixed-dim": "#454747",
+                        "on-tertiary-fixed": "#ffffff",
+                        "surface": "#131313",
+                        "surface-container-highest": "#353535",
+                        "surface-bright": "#393939",
+                        "background": "#131313",
+                        "on-primary-fixed-variant": "#e2e2e2",
+                        "on-secondary-container": "#e2e2e2",
+                        "surface-container-low": "#1b1b1b",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed": "#ffffff",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#5d5f5f",
+                        "secondary-fixed": "#c6c6c6",
+                        "on-surface-variant": "#c6c6c6",
+                        "secondary": "#c6c6c6",
+                        "surface-variant": "#353535"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Lexend"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-blur {
+            backdrop-filter: blur(24px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#131313]/80 backdrop-blur-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="Athlete profile avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a determined athlete with sweat on face in dramatic low light gym setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQkVvSNi-iMVdEJmRMXogNPEBYD2BGBqXacSShB4_-Yg9w_VONPuTglFz-WVSCn0yGdw0pOF3FSdysXWlydsNWwot7WQhQphUfg022XIuLStLjY3Sru-cwS7y7xEN5lvbz44MuIm4h3Y6fXiPOP_Ki2v81sy-Jy3b0nK-_fxup1J7vENlrlr6KOhwPzj8oU84qWv0nqmtXO_k6goZqW3Bx07S3Jjw-677-BX9F_bOa6piOZmJ7Uz8uz45VnI5Y93pFWObBACfOWM0t"/>
+</div>
+<h1 class="text-xl font-black tracking-[0.2em] text-white font-headline uppercase">KINETIC</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-high text-white hover:opacity-80 transition-opacity duration-300 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<!-- Content Canvas -->
+<main class="pt-24 pb-32 px-6 max-w-4xl mx-auto min-h-screen">
+<!-- Header Section -->
+<section class="mb-12">
+<p class="font-label text-sm uppercase tracking-[0.3em] text-on-surface-variant mb-2">Performance Archive</p>
+<h2 class="font-headline text-5xl font-black tracking-tight text-white leading-none">LOGS</h2>
+</section>
+<!-- Stats Overview Bento (Brief context for logs) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col justify-between h-32">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Monthly Distance</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline text-3xl font-bold text-white">142.8</span>
+<span class="font-label text-xs text-on-surface-variant">KM</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col justify-between h-32">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Avg Pace</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline text-3xl font-bold text-white">4'52"</span>
+<span class="font-label text-xs text-on-surface-variant">/KM</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col justify-between h-32">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Total Elevation</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline text-3xl font-bold text-white">1,204</span>
+<span class="font-label text-xs text-on-surface-variant">M</span>
+</div>
+</div>
+</div>
+<!-- History List -->
+<div class="space-y-4">
+<!-- Log Entry 1 -->
+<div class="group relative bg-surface-container p-4 rounded-lg flex items-center gap-6 cursor-pointer hover:bg-surface-container-high transition-all duration-300">
+<div class="hidden md:block w-32 h-20 rounded-md overflow-hidden bg-surface-container-lowest">
+<img alt="Route Map" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="Minimal satellite view of winding city roads and paths for running route visualization" data-location="London" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDroAmJr0EEhOwMl2rAA-4O7vz-mki7HR2dp-9f22xUhTUVmU5H8cNH_KOMb30hyan9DTAeVDFd0TRVK20EvVVV2eK0FtjA_cB4u5E_cP-n_elTBQl3c28DxznvCrqedSjcChpW4DhxnnxLoWcnf-e_a705tMp5Mi1tNCp7B3rDzWcEcvzuK8ubOcsKNXc0Vv1ng65E8zLQSkH1LSpCEVcoWAu9hXcs5zC4Omp6boYl_McqUvS9jK2x6Ww05odkcclb5UEaUaGAoCR4"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-headline text-xl font-bold text-white uppercase tracking-tight">Morning Interval Run</h3>
+<p class="font-label text-xs text-on-surface-variant">Tuesday, Oct 24 • 07:12 AM</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">chevron_right</span>
+</div>
+<div class="flex gap-8">
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Distance</p>
+<p class="font-headline text-lg font-bold text-white">8.24 <span class="text-xs font-normal">KM</span></p>
+</div>
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Pace</p>
+<p class="font-headline text-lg font-bold text-white">4'38"</p>
+</div>
+<div class="hidden sm:block">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Time</p>
+<p class="font-headline text-lg font-bold text-white">38:12</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Log Entry 2 -->
+<div class="group relative bg-surface-container p-4 rounded-lg flex items-center gap-6 cursor-pointer hover:bg-surface-container-high transition-all duration-300 border-l-4 border-primary">
+<div class="hidden md:block w-32 h-20 rounded-md overflow-hidden bg-surface-container-lowest">
+<img alt="Heart Rate Trend" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="Modern geometric line pattern representing a heart rate elevation graph over dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqvkC1Ykw7sRDH0cSwWw_ijwpJJh2q_QW1bXzGcPE_S-8bY4cHSLb3YFi56OQghyhzt_JOlhwBc5pdMp2YgK3VoVYEN3KVhOMMAe9-YOz6x7Rjth16KqNyI5gwBAf8mJUQ2DWJIABbvV0HsT66GD6y2qUQmrPjNsO9WuowyMXGUcxw6Qc_sN892JmtCefSnjteNBfJ1VA9GSr0VfQ60T7mMryZMeDLt49I0PebSEG6gBGsxphq-3YYHtSkHI9brUYZKYQIgxGiK_q1"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<h3 class="font-headline text-xl font-bold text-white uppercase tracking-tight">Personal Best: 5K</h3>
+<div class="px-2 py-0.5 rounded-full bg-primary text-on-primary text-[10px] font-bold">NEW RECORD</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">chevron_right</span>
+</div>
+<div class="flex gap-8">
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Distance</p>
+<p class="font-headline text-lg font-bold text-white">5.00 <span class="text-xs font-normal">KM</span></p>
+</div>
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Pace</p>
+<p class="font-headline text-lg font-bold text-white">4'12"</p>
+</div>
+<div class="hidden sm:block">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Time</p>
+<p class="font-headline text-lg font-bold text-white">21:00</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Log Entry 3 -->
+<div class="group relative bg-surface-container p-4 rounded-lg flex items-center gap-6 cursor-pointer hover:bg-surface-container-high transition-all duration-300">
+<div class="hidden md:block w-32 h-20 rounded-md overflow-hidden bg-surface-container-lowest">
+<img alt="Route Map" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="Aerial view of city bridge at twilight with streaks of traffic light and dark water below" data-location="Tokyo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4eqNKl-0xd0h1qnCN0OWo54CHjO2cLqRgkSwcEVJ8aYndt0IOGp0_LiKTu6BUt3JYB0HJdc45AZ4JdyTEZTdIqEFo1pJTCjiS71KB1Uq97KbJF4OGtbpS6WmRvuNmf4Bolrbr9DNEW0to1LJCoCvyueP9gfyiIPZOT2GFgDtIumYhSuL1AaLI2jr9u8Ldgy6ARBeny5hSz2tsbtTaxi6y0t-iTb34uqVYYmQmI0TzxwR9cxMp3cdP4rtLYCbq8b1E23qdh08k6WzL"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-headline text-xl font-bold text-white uppercase tracking-tight">Night City Loop</h3>
+<p class="font-label text-xs text-on-surface-variant">Sunday, Oct 22 • 09:45 PM</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">chevron_right</span>
+</div>
+<div class="flex gap-8">
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Distance</p>
+<p class="font-headline text-lg font-bold text-white">12.5 <span class="text-xs font-normal">KM</span></p>
+</div>
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Pace</p>
+<p class="font-headline text-lg font-bold text-white">5'15"</p>
+</div>
+<div class="hidden sm:block">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Time</p>
+<p class="font-headline text-lg font-bold text-white">1:05:38</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Log Entry 4 -->
+<div class="group relative bg-surface-container p-4 rounded-lg flex items-center gap-6 cursor-pointer hover:bg-surface-container-high transition-all duration-300">
+<div class="hidden md:block w-32 h-20 rounded-md overflow-hidden bg-surface-container-lowest">
+<img alt="Topography" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="Stylized topographic map with white contour lines on a charcoal grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg7lKk0m2FJd73PbA9ZlKH1VWtGmYRSGsqkhlsXsXrWLLjc0ejg5gv3p8G5Zv4mhbcLlqyBQQC2L9rfi4lH6yPO-Ly8_OP8uJMwTTm8jrVW8BAqPDPS_XI7xJJLTK5MotOIEJzuz2iDViKbCc4ktYL9zdx-RWHzhfeFEhhHgekwndW-ZgcPNoAkzMK10HtJEsB543UJcZpgDxktfdNWIXIUMCFDZGRevYQax2UYoING5IkdhVd3qZKW-phUviFV7Uvsnwz70GXTtMX"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-headline text-xl font-bold text-white uppercase tracking-tight">Recovery Walk</h3>
+<p class="font-label text-xs text-on-surface-variant">Friday, Oct 20 • 05:30 PM</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">chevron_right</span>
+</div>
+<div class="flex gap-8">
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Distance</p>
+<p class="font-headline text-lg font-bold text-white">4.20 <span class="text-xs font-normal">KM</span></p>
+</div>
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Pace</p>
+<p class="font-headline text-lg font-bold text-white">9'40"</p>
+</div>
+<div class="hidden sm:block">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Time</p>
+<p class="font-headline text-lg font-bold text-white">40:32</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- View More Button -->
+<div class="mt-12 flex justify-center">
+<button class="px-8 py-3 rounded-full bg-surface-container-highest text-white font-headline font-bold text-sm hover:bg-surface-bright transition-all active:scale-95 uppercase tracking-[0.2em]">
+                Load Previous Month
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-[#131313]/90 backdrop-blur-2xl rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<!-- RUN -->
+<a class="flex flex-col items-center justify-center text-zinc-500 hover:text-zinc-300 px-4 py-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1">play_arrow</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">RUN</span>
+</a>
+<!-- STATS -->
+<a class="flex flex-col items-center justify-center text-zinc-500 hover:text-zinc-300 px-4 py-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1">insights</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">STATS</span>
+</a>
+<!-- LOGS (Active) -->
+<a class="flex flex-col items-center justify-center bg-white text-black rounded-full px-6 py-2 scale-110 shadow-xl transition-all" href="#">
+<span class="material-symbols-outlined mb-0.5" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">LOGS</span>
+</a>
+<!-- USER -->
+<a class="flex flex-col items-center justify-center text-zinc-500 hover:text-zinc-300 px-4 py-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">USER</span>
+</a>
+</nav>
+</body></html>

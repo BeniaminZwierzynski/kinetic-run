@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KINETIC - Active Session</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ababab",
+                        "inverse-surface": "#e2e2e2",
+                        "primary": "#ffffff",
+                        "tertiary-fixed-dim": "#464747",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-tint": "#c6c6c7",
+                        "primary-container": "#d4d4d4",
+                        "tertiary": "#e3e2e2",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3a3c3c",
+                        "on-primary": "#1a1c1c",
+                        "surface-dim": "#131313",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e2e2e2",
+                        "on-error": "#690005",
+                        "on-tertiary": "#1a1c1c",
+                        "on-background": "#e2e2e2",
+                        "tertiary-fixed": "#5d5e5f",
+                        "inverse-primary": "#5d5f5f",
+                        "on-secondary": "#1a1c1c",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-tertiary-container": "#000000",
+                        "on-primary-container": "#000000",
+                        "surface-container": "#1f1f1f",
+                        "outline-variant": "#474747",
+                        "secondary-container": "#454747",
+                        "tertiary-container": "#909191",
+                        "inverse-on-surface": "#303030",
+                        "outline": "#919191",
+                        "on-tertiary-fixed-variant": "#e3e2e2",
+                        "primary-fixed-dim": "#454747",
+                        "on-tertiary-fixed": "#ffffff",
+                        "surface": "#131313",
+                        "surface-container-highest": "#353535",
+                        "surface-bright": "#393939",
+                        "background": "#131313",
+                        "on-primary-fixed-variant": "#e2e2e2",
+                        "on-secondary-container": "#e2e2e2",
+                        "surface-container-low": "#1b1b1b",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed": "#ffffff",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#5d5f5f",
+                        "secondary-fixed": "#c6c6c6",
+                        "on-surface-variant": "#c6c6c6",
+                        "secondary": "#c6c6c6",
+                        "surface-variant": "#353535"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Lexend"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #131313; color: #e2e2e2; }
+        .font-lexend { font-family: 'Lexend', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#131313]/80 backdrop-blur-xl">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant/10">
+<img alt="Athlete profile avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a determined athlete with sweat on forehead in dramatic dark studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuTkVlfqK4XTpACtIr7FcDxup28tydBZAJ_CNq3Off-FSCKZ1BjfWbZ_Jz1_1FkKIHfvhxkYwyf82IjI6iqyH9AeR8KpY5VrVySejVBX4q-A-z6i3hLTNMIP3V393PiRhj_sJdV2bJevVf47XvRXckicRsS2Rqb5OXhGc2OAfsFqjmXktzpBcajFQDRdaPiwgu08bleKh2vLDyGYpiicLOkO-omcCKGNQZ55t_VzoK9eNOjQNLvxXsIuBpo6eZKqYSYYgmugqGLdWt"/>
+</div>
+<span class="font-lexend font-bold tracking-[0.2em] text-white text-xl uppercase">KINETIC</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-white hover:opacity-80 transition-opacity duration-300 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Active Workout Canvas -->
+<main class="relative h-screen flex flex-col pt-24 pb-32 px-8 overflow-hidden">
+<!-- Live Route Background Hint (Subtle) -->
+<div class="absolute inset-0 z-0 opacity-20">
+<div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&amp;fit=crop&amp;q=80&amp;w=2000')] bg-cover bg-center grayscale contrast-125" data-alt="minimalist overhead map view of urban city streets at night with glowing light trails and dark shadows" data-location="Berlin" style=""></div>
+<div class="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface"></div>
+</div>
+<!-- Metric Cluster -->
+<div class="relative z-10 flex-1 flex flex-col justify-center gap-12">
+<!-- Main Duration Metric -->
+<section class="flex flex-col items-start ml-4">
+<span class="font-label text-[10px] font-bold tracking-[0.4em] text-on-surface-variant uppercase mb-2">Duration</span>
+<h1 class="font-headline text-[7rem] md:text-[9rem] font-extrabold text-white leading-none tracking-tighter">
+                    42:18
+                </h1>
+</section>
+<!-- Secondary Metrics Bento Grid (Asymmetric) -->
+<div class="grid grid-cols-2 gap-4 w-full">
+<!-- Distance -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-end h-48">
+<span class="font-label text-[10px] font-bold tracking-[0.4em] text-on-surface-variant uppercase mb-2">Distance</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-5xl font-bold text-white">8.42</span>
+<span class="font-label text-sm font-bold text-on-surface-variant">KM</span>
+</div>
+</div>
+<!-- Pace -->
+<div class="bg-surface-container p-8 rounded-lg flex flex-col justify-end h-48">
+<span class="font-label text-[10px] font-bold tracking-[0.4em] text-on-surface-variant uppercase mb-2">Avg Pace</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-5xl font-bold text-white">5'02</span>
+<span class="font-label text-sm font-bold text-on-surface-variant">/KM</span>
+</div>
+</div>
+</div>
+<!-- Tertiary Metrics (Horizontal Strip) -->
+<div class="flex items-center gap-12 ml-4">
+<div class="flex flex-col">
+<span class="font-label text-[10px] font-bold tracking-[0.4em] text-on-surface-variant uppercase mb-1">Heart Rate</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-lg" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-headline text-2xl font-bold text-white">164</span>
+<span class="font-label text-[10px] text-on-surface-variant ml-1">BPM</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] font-bold tracking-[0.4em] text-on-surface-variant uppercase mb-1">Calories</span>
+<div class="flex items-center gap-2">
+<span class="font-headline text-2xl font-bold text-white">542</span>
+<span class="font-label text-[10px] text-on-surface-variant ml-1">KCAL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Bar: Pause/Stop Controls -->
+<div class="relative z-20 pb-12 pt-8 flex justify-center items-center gap-4">
+<!-- Large Primary Toggle -->
+<button class="w-full max-w-md h-20 bg-primary text-on-primary rounded-full flex items-center justify-center gap-4 shadow-[0_-10px_40px_rgba(255,255,255,0.06)] hover:opacity-90 active:scale-[0.98] transition-all duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="pause" style="font-variation-settings: 'FILL' 1;">pause</span>
+<span class="font-headline text-xl font-black tracking-widest uppercase">Pause Workout</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-[#131313]/90 backdrop-blur-2xl rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.5)] md:hidden">
+<a class="flex flex-col items-center justify-center bg-white text-black rounded-full px-6 py-2 scale-110 shadow-xl transition-all cubic-bezier(0.4, 0, 0.2, 1)" href="#">
+<span class="material-symbols-outlined" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">RUN</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 hover:text-white transition-all duration-300 px-4 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">STATS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 hover:text-white transition-all duration-300 px-4 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">LOGS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 hover:text-white transition-all duration-300 px-4 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-lexend text-[10px] font-bold tracking-widest uppercase">USER</span>
+</a>
+</nav>
+<!-- Biometric Waveform Overlay (Tonal Detail) -->
+<div class="fixed bottom-0 left-0 w-full h-32 pointer-events-none z-0 opacity-10">
+<svg class="w-full h-full preserve-3d" viewbox="0 0 1440 320">
+<path d="M0,192L48,197.3C96,203,192,213,288,192C384,171,480,117,576,112C672,107,768,149,864,165.3C960,181,1056,171,1152,144C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" fill="white" fill-opacity="1"></path>
+</svg>
+</div>
+</body></html>
