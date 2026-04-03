@@ -62,6 +62,31 @@ export async function saveWorkoutToDB(
   };
 }
 
+export interface WorkoutDetail extends Workout {
+  gpsPoints: Array<{ lat: number; lng: number; timestamp: number }> | null;
+}
+
+export async function getWorkoutByIdFromDB(id: string): Promise<WorkoutDetail | null> {
+  const { data, error } = await supabase
+    .from("workouts")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error || !data) return null;
+
+  return {
+    id: data.id,
+    date: data.date,
+    distance: Number(data.distance),
+    duration: data.duration,
+    pace: Number(data.pace),
+    type: data.type as Workout["type"],
+    notes: data.notes || undefined,
+    gpsPoints: data.gps_points || null,
+  };
+}
+
 export async function deleteWorkoutFromDB(id: string): Promise<void> {
   const { error } = await supabase.from("workouts").delete().eq("id", id);
   if (error) console.error("Error deleting workout:", error);

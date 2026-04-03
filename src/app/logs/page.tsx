@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { useWorkouts } from "@/lib/use-workouts";
+import { useRouter } from "next/navigation";
 import { Workout, WORKOUT_TYPES } from "@/types/workout";
 
 function formatPace(pace: number): string {
@@ -12,6 +12,7 @@ function formatPace(pace: number): string {
 
 export default function Logs() {
   const { workouts, removeWorkout } = useWorkouts();
+  const router = useRouter();
 
   const sorted = [...workouts].sort((a, b) => b.date.localeCompare(a.date));
 
@@ -72,6 +73,7 @@ export default function Logs() {
           {sorted.map((w) => (
             <div
               key={w.id}
+              onClick={() => router.push(`/logs/${w.id}`)}
               className="group bg-surface-container p-4 rounded-2xl cursor-pointer hover:bg-surface-container-high transition-all duration-300"
             >
               <div className="flex justify-between items-start mb-3">
@@ -88,7 +90,7 @@ export default function Logs() {
                   </p>
                 </div>
                 <button
-                  onClick={() => handleDelete(w.id)}
+                  onClick={(e) => { e.stopPropagation(); handleDelete(w.id); }}
                   className="text-on-surface-variant/50 hover:text-error text-xs transition-colors"
                 >
                   ✕
